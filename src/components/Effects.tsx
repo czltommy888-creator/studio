@@ -1,0 +1,4 @@
+import {useEffect,useRef} from 'react'
+export function LoadingTransition(){return <div className="intro" aria-hidden="true">CHEN_STUDIO</div>}
+export function CustomCursor(){const ref=useRef<HTMLSpanElement>(null);useEffect(()=>{if(!matchMedia('(pointer:fine) and (prefers-reduced-motion:no-preference)').matches)return;const move=(e:PointerEvent)=>{const el=ref.current!;el.hidden=!(e.target instanceof Element && e.target.closest('[data-view]'));el.style.transform='translate('+ (e.clientX+16)+'px,'+(e.clientY+12)+'px)'};const hide=()=>{ref.current!.hidden=true};document.addEventListener('pointermove',move);document.addEventListener('pointerout',hide);return()=>{document.removeEventListener('pointermove',move);document.removeEventListener('pointerout',hide)}},[]);return <span ref={ref} hidden className="cursor micro" aria-hidden="true">View photograph</span>}
+
