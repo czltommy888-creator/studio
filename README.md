@@ -9,7 +9,7 @@ The public edition contains 29 photographs exported as responsive WebP display i
 ```powershell
 npm ci
 $env:VITE_STATIC_GALLERY='true'
-$env:VITE_BASE_PATH='/chen-studio/'
+$env:VITE_BASE_PATH='/studio/'
 npm run dev
 ```
 
@@ -18,7 +18,7 @@ npm run dev
 ```powershell
 npm ci
 $env:VITE_STATIC_GALLERY='true'
-$env:VITE_BASE_PATH='/chen-studio/'
+$env:VITE_BASE_PATH='/studio/'
 npm run build
 ```
 
