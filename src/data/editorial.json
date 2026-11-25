@@ -57,7 +57,7 @@
   "284e7d03-c773-415f-85ca-4ccabb1522ae": {
     "description": "Two silhouettes against a sunset.",
     "location": "Nanshan Bamboo Sea",
-    "coverOrder": null
+    "coverOrder": 4
   },
   "2fe0d57e-fcbb-41ae-bce1-daec968775bf": {
     "description": "A standing figure silhouetted beneath tall buildings.",
@@ -87,12 +87,12 @@
   "52ad3129-c24e-4dc8-a4de-d72a30c60bf4": {
     "description": "A red taxi passes a brightly lit storefront.",
     "location": "Hong Kong",
-    "coverOrder": 3
+    "coverOrder": 2
   },
   "70b79450-569f-4a7d-a6be-a95516afd583": {
     "description": "Pedestrians cross a sunlit intersection.",
     "location": "Hong Kong",
-    "coverOrder": null
+    "coverOrder": 3
   },
   "8b7e91ff-1b3d-4d5d-b155-72b0719c4f08": {
     "description": "A bright shop window on a dark street.",
@@ -102,7 +102,7 @@
   "e9b7e6cb-ce49-40b7-8151-30aa372522c6": {
     "description": "Repeating windows form a grid across a building facade.",
     "location": "",
-    "coverOrder": null
+    "coverOrder": 5
   },
   "49abca60-4673-4096-95f8-bfa9d01926ce": {
     "description": "Bright red beams intersect against a blue sky.",
@@ -122,12 +122,12 @@
   "403a02b8-58af-4d10-aee1-b01b3443280f": {
     "description": "Fire performers surrounded by a cascade of sparks.",
     "location": "Guangxi",
-    "coverOrder": 4
+    "coverOrder": null
   },
   "af69976c-d7ca-4737-886f-295ed5978a83": {
     "description": "A car beneath sunlit ochre mountains.",
     "location": "Dunhuang",
-    "coverOrder": 2
+    "coverOrder": null
   },
   "2494c802-ec34-4935-8c54-489a8c4f6489": {
     "description": "The last light falls across a quiet road and bare trees.",

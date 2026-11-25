@@ -15,9 +15,12 @@ try {
  assert.equal((await page.goto(url)).status(),200)
  await readyImage(page.locator('.hero-image img'))
  await page.screenshot({path:'screenshots/home-desktop.png'})
- await page.getByRole('button',{name:'Next featured photograph'}).click()
- assert.match(await page.locator('.cover-title').innerText(),/Between Ridges/)
- await page.getByRole('button',{name:'Previous featured photograph'}).click()
+ for(const title of ['Evening Road','After Hours','Crossing Paths','Between Us','Parallel Lines']){
+   assert.equal(await page.locator('.cover-title').innerText(),title)
+   await readyImage(page.locator('.hero-image img'))
+   await page.getByRole('button',{name:'Next featured photograph'}).click()
+ }
+ assert.equal(await page.locator('.cover-title').innerText(),'Evening Road')
  await page.locator('.explore').click()
  await readyImage(page.locator('.gallery img').first())
  await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector('figure')).opacity)>.99)

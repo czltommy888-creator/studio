@@ -7,3 +7,5 @@
 @media(prefers-reduced-motion:reduce),(pointer:coarse){.hero-image,.hero-type{transform:none!important}.cursor{display:none!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
 
+
+.hero-image[data-cover="e9b7e6cb-ce49-40b7-8151-30aa372522c6"] img{object-position:8% 44%}
