@@ -1,7 +1,8 @@
 import {useRef, type ReactNode} from 'react'
 import {motion, useReducedMotion, useScroll, useTransform, type MotionValue} from 'framer-motion'
 import {ArrowDown} from 'lucide-react'
-import {usePortfolio, type Work} from '../data/works'
+import {type Work} from '../data/works'
+import {diaryPhotographs} from '../data/diary-photographs'
 import {Photo} from './Photo'
 import './visual-diary.css'
 
@@ -9,11 +10,6 @@ const note = [
  'I keep a record of the light,',
  'and of those who pass through it.',
  'These are the moments I return to.'
-]
-const photoIds = [
- '52ad3129-c24e-4dc8-a4de-d72a30c60bf4', // After Hours
- '284e7d03-c773-415f-85ca-4ccabb1522ae', // Between Us
- 'e9b7e6cb-ce49-40b7-8151-30aa372522c6' // Parallel Lines
 ]
 
 function NoteLine({progress, index, children}:{
@@ -62,27 +58,18 @@ function PhotoScene({photographs,view}:{photographs:Work[];view:(work:Work)=>voi
 }
 
 export function VisualDiary({view}:{view:(work:Work)=>void}){
- const {works}=usePortfolio()
  const noteRef=useRef<HTMLDivElement>(null)
  const reduceMotion=useReducedMotion()
  const {scrollYProgress:writing}=useScroll({target:noteRef,offset:['start 0.9','end 0.58']})
- const featured=photoIds.map(id=>works.find(work=>work.id===id))
- const photographs=featured.filter((work):work is Work=>Boolean(work))
- // Keep the sequence intact when an editor unpublishes a featured work.
- for(const work of works){
-  if(photographs.length>=3)break
-  if(!photographs.includes(work))photographs.push(work)
- }
  return <section className="visual-diary" id="visual-diary" aria-label="Visual diary" data-reduced={reduceMotion||undefined}>
   <div className="diary-paper">
    <div className="diary-note" ref={noteRef}>
-    <p className="diary-note-label micro">A note from<br/>CHEN_STUDIO</p>
     <div className="diary-letter">
      <p>{note.map((line,index)=><NoteLine progress={writing} index={index} key={line}>{line}</NoteLine>)}</p>
      <span className="diary-signature">Chen</span>
     </div>
    </div>
   </div>
-  {photographs.length>0&&<PhotoScene photographs={photographs} view={view}/>}
+  <PhotoScene photographs={diaryPhotographs} view={view}/>
  </section>
 }
