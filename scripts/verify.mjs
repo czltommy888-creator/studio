@@ -22,6 +22,7 @@ try {
  }
  assert.equal(await page.locator('.cover-title').innerText(),'Evening Road')
  await page.locator('.explore').click()
+ await page.locator('.gallery figure').first().scrollIntoViewIfNeeded()
  await readyImage(page.locator('.gallery img').first())
  await page.waitForFunction(()=>Number(getComputedStyle(document.querySelector('figure')).opacity)>.99)
  await page.screenshot({path:'screenshots/selected-works.png'})
