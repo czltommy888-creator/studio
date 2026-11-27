@@ -1,0 +1,26 @@
+.contact-card{
+ position:fixed;
+ z-index:20;
+ top:84px;
+ right:clamp(16px,3vw,56px);
+ width:min(440px,calc(100vw - 32px));
+ height:min(620px,calc(100dvh - 108px));
+ display:flex;
+ flex-direction:column;
+ background:#111211;
+ border:1px solid #b8ad9966;
+ box-shadow:0 20px 75px #0008;
+ overflow:hidden;
+ border-radius:8px;
+ animation:contact-card-arrive .32s cubic-bezier(.22,1,.36,1) both;
+}
+.contact-card-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 12px 9px 18px;flex-shrink:0}
+.contact-card-heading h2{font-size:10px;line-height:1.5;letter-spacing:.12em;color:#d6c9b6}
+.contact-card-heading button{display:grid;place-items:center;width:34px;height:34px;border:1px solid #847b6955;border-radius:50%}
+.contact-card iframe{display:block;width:100%;flex:1;min-height:0;border:0;background:#d5d6cd}
+nav button.contact-trigger{font-family:'Courier New',monospace;font-size:12px;line-height:1.45;text-transform:uppercase;letter-spacing:.12em;color:#b3b1ad;padding:12px 0}
+nav button.contact-trigger[aria-expanded=true]{color:#f4f0e9}
+.studio-card-trigger{margin:2px 0 22px;padding:12px 18px;border:1px solid #b7a78b;color:#e7dbcb;font:12px 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase}
+@keyframes contact-card-arrive{from{opacity:0;transform:translateY(-16px) rotate(1deg)}to{opacity:1;transform:none}}
+@media(max-width:760px){.contact-card{top:72px;right:16px;height:min(560px,calc(100dvh - 88px))}}
+@media(prefers-reduced-motion:reduce){.contact-card{animation:none}}
