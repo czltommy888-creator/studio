@@ -1,26 +1,30 @@
 .contact-card{
  position:fixed;
  z-index:20;
- top:84px;
+ top:72px;
  right:clamp(16px,3vw,56px);
  width:min(440px,calc(100vw - 32px));
  height:min(620px,calc(100dvh - 108px));
  display:flex;
  flex-direction:column;
- background:#111211;
- border:1px solid #b8ad9966;
- box-shadow:0 20px 75px #0008;
+ background:transparent;
  overflow:hidden;
- border-radius:8px;
- animation:contact-card-arrive .32s cubic-bezier(.22,1,.36,1) both;
 }
-.contact-card-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:9px 12px 9px 18px;flex-shrink:0}
-.contact-card-heading h2{font-size:10px;line-height:1.5;letter-spacing:.12em;color:#d6c9b6}
-.contact-card-heading button{display:grid;place-items:center;width:34px;height:34px;border:1px solid #847b6955;border-radius:50%}
-.contact-card iframe{display:block;width:100%;flex:1;min-height:0;border:0;background:#d5d6cd}
+.contact-card-close{position:absolute;z-index:2;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.contact-card-close:focus-visible{top:10px;right:10px;width:auto;height:auto;padding:10px;clip-path:none;background:#111;color:#eee}
+.contact-card .lanyard{flex:1;min-height:0;background:transparent}
+.contact-card canvas{filter:drop-shadow(-12px 20px 16px #0009);transform-origin:50% 0;animation:contact-strap-pop 1.35s both}
 nav button.contact-trigger{font-family:'Courier New',monospace;font-size:12px;line-height:1.45;text-transform:uppercase;letter-spacing:.12em;color:#b3b1ad;padding:12px 0}
 nav button.contact-trigger[aria-expanded=true]{color:#f4f0e9}
 .studio-card-trigger{margin:2px 0 22px;padding:12px 18px;border:1px solid #b7a78b;color:#e7dbcb;font:12px 'Courier New',monospace;letter-spacing:.08em;text-transform:uppercase}
-@keyframes contact-card-arrive{from{opacity:0;transform:translateY(-16px) rotate(1deg)}to{opacity:1;transform:none}}
-@media(max-width:760px){.contact-card{top:72px;right:16px;height:min(560px,calc(100dvh - 88px))}}
-@media(prefers-reduced-motion:reduce){.contact-card{animation:none}}
+/* Start when the lazy model mounts, so its entrance survives the initial download. */
+@keyframes contact-strap-pop{
+ 0%{opacity:0;transform:translateY(-105%) rotate(-4deg)}
+ 7%{opacity:1}
+ 56%{transform:translateY(22px) rotate(2deg);animation-timing-function:ease-out}
+ 74%{transform:translateY(-12px) rotate(-1deg);animation-timing-function:ease-in-out}
+ 89%{transform:translateY(5px) rotate(.4deg);animation-timing-function:ease-out}
+ 100%{opacity:1;transform:translateY(0) rotate(0)}
+}
+@media(max-width:760px){.contact-card{top:60px;right:16px;height:min(560px,calc(100dvh - 76px))}}
+@media(prefers-reduced-motion:reduce){.contact-card canvas{animation:none}}

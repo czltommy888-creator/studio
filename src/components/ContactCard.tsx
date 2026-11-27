@@ -1,19 +1,18 @@
-import {useEffect,useRef} from 'react'
-import {X} from 'lucide-react'
-import cardUrl from '../assets/contact/CHEN.html?url'
+import {lazy,Suspense,useEffect,useRef} from 'react'
+import front from './lanyard/front.png'
+import back from './lanyard/back.png'
+import cardStyle from './lanyard/model.css?inline'
 import './contact-card.css'
+
+const Lanyard=lazy(()=>import('./lanyard/model.js'))
 
 export function ContactCard({close}:{close:()=>void}){
  const panel=useRef<HTMLDivElement>(null)
- const frame=useRef<HTMLIFrameElement>(null)
- const button=useRef<HTMLButtonElement>(null)
- const frameCleanup=useRef<()=>void>(()=>{})
  const onClose=useRef(close)
  onClose.current=close
-
  useEffect(()=>{
   const origin=document.activeElement as HTMLElement|null
-  button.current?.focus({preventScroll:true})
+  panel.current?.focus({preventScroll:true})
   const key=(event:KeyboardEvent)=>{
    if(event.key==='Escape'){event.preventDefault();onClose.current()}
   }
@@ -26,27 +25,14 @@ export function ContactCard({close}:{close:()=>void}){
   return()=>{
    window.removeEventListener('keydown',key)
    document.removeEventListener('pointerdown',outside)
-   frameCleanup.current()
    origin?.focus({preventScroll:true})
   }
  },[])
-
- function loaded(){
-  frameCleanup.current()
-  const doc=frame.current?.contentDocument
-  if(!doc)return
-  const key=(event:KeyboardEvent)=>{
-   if(event.key==='Escape'){event.preventDefault();onClose.current()}
-  }
-  doc.addEventListener('keydown',key)
-  frameCleanup.current=()=>doc.removeEventListener('keydown',key)
- }
-
- return <div className="contact-card" id="studio-contact-card" ref={panel} role="dialog" aria-modal="false" aria-labelledby="studio-card-title">
-  <div className="contact-card-heading">
-   <h2 id="studio-card-title" className="micro">CHEN / Personal card</h2>
-   <button ref={button} type="button" onClick={close} aria-label="Close contact card"><X size={18}/></button>
-  </div>
-  <iframe ref={frame} src={cardUrl} title="CHEN interactive personal card" onLoad={loaded}/>
+ return <div className="contact-card" id="studio-contact-card" ref={panel} tabIndex={-1} role="dialog" aria-modal="false" aria-label="CHEN personal card">
+  <style>{cardStyle}</style>
+  <button className="contact-card-close" type="button" onClick={close} aria-label="Close contact card">Close card</button>
+  <Suspense fallback={null}>
+   <Lanyard frontImage={front} backImage={back} cardColor="#171819" strapColor="#242425" strapLength={0.32} strapWidth={0.52} cornerRadius={0.16} size={0.40} finish="matte" breeze={0.02} intro={false}/>
+  </Suspense>
  </div>
 }
